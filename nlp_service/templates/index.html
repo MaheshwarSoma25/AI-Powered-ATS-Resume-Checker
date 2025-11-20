@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Powered ATS Resume Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Inconsolata:wght@200..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <section class="section-1">
+        <div class="home-details">
+            <h1>Free ATS <br>Resume Checker</h1>
+            <p>Check your resume for any ATS issues so you can get more interviews and land a good job.</p>
+            <ul>
+                <li><i class="bi bi-check-circle-fill"></i>Pass the ATS with flying colors</li>
+                <li><i class="bi bi-check-circle-fill"></i>Bot-Beat resume score</li>
+                <li><i class="bi bi-check-circle-fill"></i>Actionable feedback</li>
+            </ul>
+
+            <a href="#section-2">GET STARTED</a>
+        </div>
+        <div class="home-img">
+            <img src="{{ url_for('static', filename='img.png') }}" alt="logo">
+            <img src="../static/img.png" alt="logo">
+        </div>
+    </section>
+
+    <section class="section-2" id="section-2">
+    <h1>Check ATS Score</h1>
+    <div class="container">
+        <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+        
+        <!-- Upload Section -->
+        <div>
+            <p><i class="bi bi-1-circle-fill"></i> Upload Your Resume</p>
+
+            <div class="upload-box" id="uploadBox">
+            <input type="file" id="resumeInput" name="file" hidden accept=".pdf,.docx">
+            <div id="uploadText">Click or Drop file here to upload your Resume/CV</div>
+            </div>
+        </div>
+
+        <!-- Job Description Section -->
+        <div>
+            <p><i class="bi bi-2-circle-fill"></i> Add Job Description</p>
+            <textarea name="jd" id="jd" placeholder="Paste the Job Description"></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div>
+            <button class="result" type="submit">Result</button>
+        </div>
+        </form>
+    </div>
+    </section>
+
+
+    <!-- Section 3-Result Section -->
+    <section class="section-3" id="section-3" style="display: none;">
+        <div class="result-container">
+            <h1>ATS Analysis Result</h1>
+
+            <div class="score-box">
+                <h2>Your ATS Score</h2>
+                <p id="score">85%</p>
+            </div>
+
+            <div class="keywords-box">
+                <h3>Suggested Keywords to Add</h3>
+                <div id="suggested-keywords" class="keyword-list">
+                    <!-- Keywords will be shown here -->
+                </div>
+            </div>
+
+            <button id="copyKeywords" class="copy-btn">
+                <i class="bi bi-clipboard"></i> Copy Keywords
+            </button>
+
+            <button id="checkAgain" class="result">Check Again</button>
+        </div>
+    </section>
+
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

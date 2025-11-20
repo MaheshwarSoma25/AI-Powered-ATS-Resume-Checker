@@ -1,0 +1,7 @@
+flask
+python-multipart
+python-dotenv
+PyMuPDF==1.23.0
+docx2txt
+openai
+requests
